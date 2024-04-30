@@ -32,10 +32,10 @@ Start_Btn = 315
 axis = {
     ecodes.ABS_HAT0X: 'dpad_x',
     ecodes.ABS_HAT0Y: 'dpad_y',
-    # ecodes.ABS_X: 'ls_x',
-    # ecodes.ABS_Y: 'ls_y',
-    # ecodes.ABS_RX: 'rs_x',
-    # ecodes.ABS_RY: 'rs_y'
+    ecodes.ABS_X: 'ls_x',
+    ecodes.ABS_Y: 'ls_y',
+    ecodes.ABS_RX: 'rs_x',
+    ecodes.ABS_RY: 'rs_y'
 }
 
 center = {
