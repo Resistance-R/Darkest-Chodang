@@ -35,21 +35,12 @@ axis = {
     ecodes.ABS_X: 'ls_x',
     ecodes.ABS_Y: 'ls_y',
     ecodes.ABS_RX: 'rs_x',
-    ecodes.ABS_RY: 'rs_y'
+    ecodes.ABS_RY: 'rs_y',
 }
 
-center = {
-    'ls_x': STICK_MAX/2,
-    'ls_y': STICK_MAX/2,
-    'rs_x': STICK_MAX/2,
-    'rs_y': STICK_MAX/2
-}
-
-last = {
-    'ls_x': STICK_MAX/2,
-    'ls_y': STICK_MAX/2,
-    'rs_x': STICK_MAX/2,
-    'rs_y': STICK_MAX/2
+trigger = {
+    ecodes.ABS_Z: 'lt',
+    ecodes.ABS_RZ: 'rt'
 }
 
 """
@@ -77,26 +68,54 @@ for event in gamepad.read_loop():
                 print("Start Button Pressed.")
 
         elif event.value == 0:
-            print("Button Released.")    
+            print("Button Released.")  
 
     elif event.type == ecodes.EV_ABS:
-        if event.code in axis:
-            if axis[event.code] in ['ls_x', 'ls_y', 'rs_x', 'rs_y']:
-                last[axis[event.code]] = event.value
-                value = event.value - center[axis[event.code]]
-                if abs(value) <= CENTER_TOLERANCE:
-                    value = 0
+        if event.code == ecodes.ABS_Z:
+            if event.value > 0:
+                print('left_trigger pressed')
+            elif event.value == 0:
+                print('left_trigger released')
 
-                if axis[event.code] == 'rs_x':
-                    if value < 0:
-                        print('left')
-                    else:
-                        print('right')
-                    print(value)
+        elif event.code == ecodes.ABS_RZ:
+            if event.value > 0:
+                print('right_trigger pressed')
+            elif event.value == 0:
+                print('right_trigger released')
 
-                elif axis[event.code] == 'ls_y':
-                    if value < 0:
-                        print('foreward')
-                    else:
-                        print('backward')
-                    print(value)
+        elif event.code == ecodes.ABS_HAT0X:
+            if event.value < 0:
+                print('left')
+            elif event.value > 0:
+                print('right')
+
+        elif event.code == ecodes.ABS_HAT0Y:
+            if event.value > 0:
+                print('backward')
+            elif event.value < 0:
+                print('forward')
+
+        elif event.code in axis:
+            if axis[event.code] == 'ls_x':
+                if event.value < 0:
+                    print('left_stick left')
+                elif event.value > 0:
+                    print('left_stick right')
+
+            elif axis[event.code] == 'ls_y':
+                if event.value < 0:
+                    print('left_stick up')
+                elif event.value > 0:
+                    print('left_stick down')
+
+            elif axis[event.code] == 'rs_x':
+                if event.value < 0:
+                    print('right_stick left')
+                elif event.value > 0:
+                    print('right_stick right')
+
+            elif axis[event.code] == 'rs_y':
+                if event.value < 0:
+                    print('right_stick up')
+                elif event.value > 0:
+                    print('right_stick down')
