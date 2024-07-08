@@ -57,4 +57,4 @@ ___
 ### 바로 이곳에서...
 ![darkest_Dungeon_logo](https://upload.wikimedia.org/wikipedia/fr/8/8d/Darkest_Dungeon_Logo.png)
 ___
-![participation_discord_link]()
+![participation_discord_link](https://github.com/Resistance-R/Darkest-Chodang/blob/master/Darkest_Chodang.png?raw=true)
